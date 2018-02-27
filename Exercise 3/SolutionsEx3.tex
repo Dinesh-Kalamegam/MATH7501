@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\begin{document}
+\title{MATH7501: Exercise 3 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (6 MARKS)}
+\subsection{Expression for $P(Y\leq y)$}
+Distribution functon of
+\begin{align*}
+    X: F_{x}(x) = P(X \leq x) \\
+    Y: F_{y}(y) = P(Y \leq y)
+\end{align*}
+Then
+\begin{align*}
+    P(Y \leq y ) &= P(aX+b \leq y) \\
+                 &= P(aX \leq y-b)
+\end{align*}
+\textbf{if \bm{$(a>0)$}}
+\begin{align*}
+    P(Y \leq y ) &= P\left(X\leq \frac{y-b}{a}\right) \\
+                 &= \boxed{ F_{x}\left(\frac{y-b}{a}\right)}
+\end{align*}
+\textbf{if \bm{$(a<0)$}}
+\begin{align*}
+    P(Y \leq y ) &= P(X\geq \frac{y-b}{a}) \\
+                 &= 1- P(X\leq \frac{y-b}{a}) \\
+                 &= \boxed{1- F_{x}\left(\frac{y-b}{a}\right)}
+\end{align*}
+\textbf{Note}
+\begin{equation*}
+    P\left(X\leq \frac{y-b}{a}\right) = P\left(X< \frac{y-b}{a}\right)
+\end{equation*}
+because X is continuous
+\subsection{Distribution Function of Y}
+In general if $U \sim U(c,d)$ the distribution function is given by
+equation
+\begin{equation*}
+  F_{U}(x) =
+  \begin{cases}
+                                   0 & \text{if $x \leq c$} \\
+                                   \frac{x-c}{d-c} & \text{if $c\leq x \leq d$} \\
+                                   1 & \text{if $x>d$}
+  \end{cases}
+\end{equation*}
+Here $X = U \sim (0,1)$ so we obtain
+\begin{equation*}
+  F_{X}(x) =
+  \begin{cases}
+                                   0 & \text{if $x \leq 0$} \\
+                                   x & \text{if $0\leq x \leq 1$} \\
+                                   1 & \text{if $x>1$}
+  \end{cases}
+\end{equation*}
+Then since $a > 0$
+\begin{equation*}
+    F_{Y}(y) = P(Y \leq y) = F_{X}\left(\frac{y-b}{a}\right)
+\end{equation*}
+\begin{equation*}
+  F_{Y}(y) =
+  \begin{cases}
+                                   0 & \text{if $\frac{y-b}{a} \leq 0$} \\ \\
+                                   \frac{y-b}{a} & \text{if $0 \leq \frac{y-b}{a} \leq 1$} \\ \\
+                                   1 & \text{if $\frac{y-b}{a}>1$}
+  \end{cases}
+\end{equation*}
+This can then rewritten so
+\begin{equation*}
+  F_{Y}(y) =
+  \begin{cases}
+                                   0 & \text{if $y \leq b$} \\ \\
+                                   \frac{y-b}{a} & \text{if $b \leq y \leq a+b$} \\ \\
+                                   1 & \text{if $y>a+b$}
+  \end{cases}
+\end{equation*}
+Then $Y \sim U(a,b)$ so Y has a \textbf{uniform distribution}
+\section{Question 2 (4 MARKS)}
+\subsection{K in terms of $\alpha$}
+\begin{equation*}
+  f(x) =
+  \begin{cases}
+                                   \frac{K}{x^{\alpha}} & \text{if $x \geq 1$} \\ \\
+                                   0 & \text{Otherwise}
+  \end{cases}
+\end{equation*}
+Probability Density Function of X. For this to be a valid pdf we require
+\begin{align*}
+    \int_{-\infty}^{\infty} f(x)dx &= 1 \\
+                                   &= \int_{-\infty}^{1} f(x)dx + \int_{1}^{\infty} f(x)dx \\ \\
+                                   &= \int_{-\infty}^{1} 0 + \int_{1}^{\infty} Kx^{-\alpha}dx \\ \\
+                                   &= K \int_{1}^{\infty} x^{-\alpha}dx \\ \\
+                                   &= \frac{K}{1-\alpha}\left[x^{1-\alpha}\right]_{-\infty}^{1} \\ \\
+                                   &= \frac{K}{1-\alpha}\left[0-1^{1-\alpha}\right]\\ \\
+                                   &= \frac{K}{\alpha -1 } \\ \\
+                                   &\implies \boxed{K =\alpha -1}
+\end{align*}
+\textbf{Note}: $\alpha > 1 \implies 1-\alpha < 0$ and $x^{1-\alpha} =0 $ as $x \to 0$
+\subsection{State the values of r where the $r^{th}$ moment $E(X^{r})$ exists}
+Consider
+\begin{align*}
+    E(X^{r}) &= \int_{-\infty}^{\infty} x^{r}f(x)dx \\ \\
+             &= \int_{1}^{\infty} x^{r}Kx^{-\alpha}dx \\ \\
+             &= \boxed{K\int_{1}^{\infty} x^{r-\alpha}dx} \\ \\
+\end{align*}
+so the integral for the $r^{th}$ moment is $E(X^{r}) = K\int_{1}^{\infty} x^{r-\alpha}dx$ . This integral only converges absolutely if $r-\alpha < -1$ i.e. $\boxed{r <\alpha -1}$
+
+\textbf{Note} $r-\alpha-1 <0$ to ensure that $x^{r-\alpha+1} \to 0$ as $x \to \infty$
+\section{Question 3 (7 MARKS)}
+Let $X$ be the \emph{Number of battery replacements in 10 hours} and $C$ be the event that ``The batteries are counterfeit" (i.e. normal, not longlife)
+Given
+\begin{align*}
+    C: X \sim Poi(3) \text{ (3 batteries per 10 hour use)}\\
+    C^{c}: X \sim Poi(1) \text{(1 battery per 10 hour use)} \\
+\end{align*}
+Where $C^{c}$ is the complement of C long life batteries $\bm{P(C)=0.05 \land P(C^{c}=0.95)}$
+if $X \sim Poi(\mu)$ the
+\begin{equation*}
+    P(X=k)= \frac{\mu^{k}e^{-\mu}}{k!}
+\end{equation*}
+So consider
+\begin{align*}
+    P(C | X=3) &= \frac{P(X=3|C)P(C)}{P(X=3)} \\ \\
+               &:  \text{(By Baye's Theorem)} \\ \\
+               &= \frac{P(X=3|C)P(C)}{P(X=3|C)P(C + P(X=3|C^{c})P(C^{c})} \\ \\
+               &:  \text{(By Total Law of Probability)} \\ \\
+               &= \frac{\left(\frac{3^{3}e^{-3}}{3!} \right)(0.05)}{\left(\frac{3^{3}e^{-3}}{3!} \right)(0.05) +\left(\frac{1^{3}e^{-1}}{3!} \right)(0.95)} \\ \\
+               &= \boxed{0.163 \text{ to 3 sf}}
+\end{align*}
+\subsection{Is the poisson distibution suitable}
+No its not suitable. The poisson process requires the independence from overlapping time intervals.
+\end{document}

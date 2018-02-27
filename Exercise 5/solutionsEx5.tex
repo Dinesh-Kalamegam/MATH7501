@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tabularx}
+
+\begin{document}
+\title{MATH7501: Exercise 5 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\renewcommand\qedsymbol{\textbf{\emph{Quod Erat Demonstrandum}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (6 MARKS)}
+\subsection{Find pdf of Y}
+$Y=g(X)$ and $g$ is a strictly monotone function. Then we may use the formula
+\begin{equation*}
+  f_{Y}(y) =f_{X}(g^{-1}(y))\left\lvert \frac{d}{dy}(g^{-1}(y)) \right\rvert
+\end{equation*}
+Let $X = 1/Y \implies Y=1/X \implies X \sim \Gamma(\alpha,\lambda)$
+
+pdf of X is given by
+\begin{equation*}
+  f_{X}(x)= \frac{\lambda^{\alpha}x^{\alpha -1} e^{-\lambda x}}{\Gamma(\alpha)}
+\end{equation*}
+Here $g(x)= 1/x$ and $X$ takes values in $\mathbb{R}^{+}$ so we can say that g(x) is \textbf{monotonic decreasing} in  $\mathbb{R}^{+}$
+
+$Y=1/X$ so Y can only take values greater that zero. so for $f_{Y}(y)=0$ for $y\leq0$ then for $y>0$ apply the transformation formula.
+
+$g(x)=\frac{1}{x} \implies g^{-1}(y) = \frac{1}{y}$ and $\frac{dx}{dy} = -\frac{1}{y^{2}}$ for $y>0$ we then then have
+\begin{align*}
+    f_{Y}(y) &=f_{X}(g^{-1}(y))\left\lvert \frac{d}{dy}(g^{-1}(y)) \right\rvert \\ \\
+            &= \frac{\lambda^{\alpha}(\frac{1}{y})^{\alpha -1} e^{-\lambda (\frac{1}{y})}}{\Gamma(\alpha)} \cdot \left \lvert -\frac{1}{y^{2}} \right\rvert \\ \\
+            &= \frac{\lambda^{\alpha}y^{-(\alpha+1)}e^{-\frac{\lambda}{y}}}{\Gamma(\alpha)}
+\end{align*}
+so combining this together
+\begin{equation*}
+  \boxed{
+  f_{Y}(y)=
+  \begin{cases}
+    0 & \text{if $y\leq0$} \\ \\
+    \frac{\lambda^{\alpha}y^{-(\alpha+1)}e^{-\frac{\lambda}{y}}}{\Gamma(\alpha)} & \text{Otherwise i.e. $y>0$}
+  \end{cases}
+  }
+\end{equation*}
+\section{Question 2 (4 MARKS)}
+\begin{proof}
+\begin{align*}
+  E(\Phi(X_{1},X_{2})) &= \sum_{x1} \sum_{x2} \Phi(X_{1},X_{2}) p(x_{1},x_{2}) \\ \\
+  &= \sum_{x1} \sum_{x2} x_{1} p(x_{1},x_{2}) \\ \\
+  &= \sum{x_{x1}}P(X=x_{1}) \text{  as  $\sum_{x2}P(X_{1}=x_{1},X_{2}=x_{2}) = P(X=x_{1})$} \\ \\
+  &= E(X_{1}) \text{ by defiintion}
+\end{align*}
+\end{proof}
+\section{Question 3 (10 MARKS)}
+\subsection{Find joint pmf table}
+$X,Y$ take values 0, 1 and 2
+
+$X \sim Bin(2,1/2)$ and Given $X=x$ we have $Y \sim Bin(x,1/2)$
+
+Then we can construct table using $P(X=x,Y=y) = P(X=x \cap Y=y)$ which is the same as $P(Y=y | X=x) P(X=x)$
+
+We note that $P(X=x,Y=y)=0$ if $y\geq x$ which is obvious because we can't toss a coin Y more times we tossed the coin X.
+
+We can trivially find the probabilities of the coin tosss of X so we have that
+\begin{align*}
+  P(X=0)=\frac{1}{4}\\
+  P(X=1)=\frac{1}{2} \\
+  P(X=2)=\frac{1}{4}
+\end{align*}
+So now we find the joint probabilities
+\begin{align*}
+  P(X=0,Y=0) = P(Y=0|X=0)P(X=1) = 1 \times \frac{1}{4} = \frac{1}{4} \\ \\
+  P(X=1,Y=0) = P(Y=0|X=1)P(X=1) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \\ \\
+  P(X=1,Y=1) = P(Y=1|X=1)P(X=1) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \\ \\
+  P(X=2,Y=0) = P(Y=0|X=2)P(X=2) = \frac{1}{4} \times \frac{1}{4} = \frac{1}{16} \\ \\
+  P(X=2,Y=1) = P(Y=1|X=2)P(X=2) = \frac{1}{2} \times \frac{1}{4} = \frac{1}{8} \\ \\
+  P(X=2,Y=2) = P(Y=2|X=2)P(X=2) = \frac{1}{4} \times \frac{1}{4} = \frac{1}{16}
+\end{align*}
+So we obtain the following table that expresses the joint pmf
+
+\begin{tabularx}{\textwidth}{ |X|X|X|X| }
+  \hline
+  $P(X=x,Y=y)$ & $\bm{y=0}$ & $\bm{y=1}$ & $\bm{y=2}$ \\
+  \hline
+  $\bm{x=0}$ & $1/4$  & $0$  & $0$  \\
+  \hline
+  $\bm{x=1}$ & $1/4$  & $1/4$  & $0$  \\
+  \hline
+  $\bm{x=2}$ & $1/16$  & $1/8$  & $1/16$  \\
+  \hline
+\end{tabularx}
+
+\subsection{Marginal pmfs}
+The marginal pmfs are obtained by summing over rows and columns respectively
+
+\begin{tabularx}{\textwidth}{ |X|X|X|X| }
+  \hline
+   & $\bm{k=0}$ & $\bm{k=1}$ & $\bm{k=2}$ \\
+  \hline
+  $\bm{P(X=k)}$ & $1/4$  & $1/2$  & $1/4$  \\
+  \hline
+  $\bm{P(Y=k)}$ & $9/16$  & $6/16$  & $1/16$  \\
+  \hline
+\end{tabularx}
+\subsection{Are X and Y independent}
+For independence require that $\forall x,y : P(X=x,Y=y)=P(X=x)P(Y=y)$ where $P(X=x)$ and $P(Y=y)$ are from the marginal pmfs
+
+So in this case take the easy example of $P(X=0,Y=1) =0$ we have that
+\begin{align*}
+  P(X=0)P(Y=1)= \frac{1}{4} \times \frac{6}{16} = \frac{6}{64} \neq 0
+\end{align*}
+Then X are Y are \textbf{not independent} as $P(X=0,Y=1) \neq P(X=0)P(Y=1)$
+\end{document}

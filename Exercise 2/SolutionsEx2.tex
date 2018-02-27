@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\begin{document}
+\title{MATH7501: Exercise 2 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (4 MARKS)}
+\subsection{Number of sixes obtained in three successive throws of a fair die}
+Yes, \bm{$ n =3 $} and \bm{$ p = \frac{1}{6} $}
+
+\subsection{Number of aces dealt in a hand of four cards from a standard pack }
+No, trials are not independent (success probability at each stage depends on what has already happened). Can say this is modelled by a \emph{hypergeometric distribution}
+
+\subsection{The number of students in a class of 40 whose birthday falls on a Sunday this year}
+Yes (providing there are no siblings in the class)  \bm{$ n=40$} and \bm{$p =\frac{1}{7}$}
+
+\noindent (Though this question is debatable if its able to be modelled by binomial distribution and the probability is debabtable. The answers say $p= \frac{1}{7}$)
+
+\subsection{The number of throws of a fair coin until the first head obtained}
+No, this is modelled by a \emph{geometric distribution}
+
+\section{Question 2 (4 MARKS)}
+Let $X$ be the number of correct answers.Then X can be modelled by $ X \sim Bin(10,\frac{1}{4})$
+\subsection{P(X $\geq$ 8)}
+ We require here
+ \begin{equation*}
+     P(X=8) + P(X=9) + P(X=10)
+ \end{equation*}
+ In general for $Y\sim Bin(n,p) :$
+
+\begin{equation*}
+    P(Y=k) = \binom{n}{k} p^{k} (1-p)^{n-k}
+\end{equation*}
+So what we have is then
+\begin{equation*}
+    \binom{10}{8} \left(\frac{1}{4} \right)^{8} \left(\frac{3}{4}\right)^{2} +
+    \binom{10}{9} \left(\frac{1}{4} \right)^{9} \left(\frac{3}{4}\right)^{1}+
+    \binom{10}{10} \left(\frac{1}{4} \right)^{10} \left(\frac{3}{4}\right)^{0}
+\end{equation*}
+Which simplifies to \bm{$P(X \geq 8) = 0.000416 $} \emph{to 3sf}
+\subsection{Probability that the last of the ten answers given is the eighth one that is correct}
+Required probability that
+\begin{equation*}
+    P(7 \text{ out of } 9 \text{ is correct and } 10^{th} \text{ is correct}) = P(10^{th} \text{ is correct } | (7 \text{ out of } 9 \text{ is correct )} )
+\end{equation*}
+Now we use the fact that
+\begin{align*}
+    P(A \cap B) &= P(A)P(B|A) \text{ (conditional probability)} \\
+                &= P(A)P(B) \text{ in this case as events are \textbf{independent}}
+\end{align*}
+So
+\begin{align*}
+    &=\binom{9}{7}\left(\frac{1}{4}\right)^{7} \left(\frac{3}{4}\right)^{2} \times \left(\frac{1}{4}\right) \\ \\
+    &= \bm{0.000309 \text{\emph{ to 3sf}}}
+\end{align*}
+
+\section{Question 3 (5 MARKS)}
+Let $X$ be the number of breakdowns in a year. Then $ X \sim Geo(0.8)$ Then in this case
+\begin{equation*}
+    E(X) = \frac{1}{p} = \frac{1}{0.8} = 1.25
+\end{equation*}
+\begin{equation*}
+        Var(X) = \frac{1-p}{p^{2}} = \frac{0.2}{0.8^{2}} = 0.3125
+\end{equation*}
+
+\subsection{Find the expected value and the variance of the total cost of repairs in a year.}
+Let $Y$ be the cost of repairs then $Y=150X$. Now recall these two facts for when $Y = aX+b$
+\begin{equation}
+     \boxed{E(Y) = aE(X)+b}
+\end{equation}
+\begin{equation}
+     \boxed{Var(Y) = a^{2}Var(X)}
+\end{equation}
+So lets use these in the case of where $Y=150X$
+\begin{equation*}
+    E(Y)=E(150X)=150 \times 1.25 =  \bm{\pounds187.50} \text{\emph{ (by 3.1.1)}}
+\end{equation*}
+\begin{equation*}
+    Var(Y)=Var(150X)=150^{2} \times 0.3125 =  \bm{\pounds7031.25} \text{\emph{ (by 3.1.2)}}
+\end{equation*}
+
+\subsection{Expected Cost and Variance under the Insurance Policy}
+Under this insurance policy the repair cost is now given by
+\begin{align*}
+    Y &= (150-100)X + 60 \\
+      &= 50X + 60
+\end{align*}
+
+So
+\begin{equation*}
+    E(Y)=E(50X+60)=50 \times 1.25 + 60 =  \bm{\pounds122.50} \text{\emph{ (by 3.1.1)}}
+\end{equation*}
+\begin{equation*}
+    Var(Y)=Var(50X+60)=50^{2} \times 0.3125 =  \bm{\pounds781.25} \text{\emph{ (by 3.1.2)}}
+\end{equation*}
+
+\section{Question 4 (7 MARKS)}
+$X \sim Bin(n,p)$ and we know that
+\begin{equation*}
+    P(X=k) = \binom{n}{k} p^{k} (1-p)^{n-k} \text{ where } k = 0,1,..,n
+\end{equation*}
+Then the \textbf{pgf} is defined by %\binom{n}{k} p^{k} q^{n-k} \binom{n}{k} p^{k} q^{n-k}%
+\begin{equation*}
+    \Pi_{X}(z) = \sum_{k} z^{k}P(X=k)
+\end{equation*}
+There is no ambiguity in variable so $\Pi_{X}(z) = \Pi(z)$
+
+\noindent So now let us find $\Pi^{'}(z)$ and $\Pi^{''}(z)$
+\begin{align*}
+    \Pi^{'}(z) &= n(pz+(1-p))^{n-1}p \\
+               &= np(pz+(1-p))^{n-1} \text{ (\emph{chain rule wrt $z$})}
+\end{align*}
+\begin{align*}
+    \Pi^{''}(z) &= n(n-1)p(pz+(1-p))^{n-2}p \\
+               &= n(n-1)p^{2}(pz+(1-p))^{n-2} \text{ (\emph{chain rule wrt $z$})}
+\end{align*}
+Then recall three facts
+\begin{equation}
+    \boxed{E(X)=\Pi^{'}(1)}
+\end{equation}
+\begin{equation}
+    \boxed{E(X(X-1))=\Pi^{''}(1)}
+\end{equation}
+\begin{equation}
+    \boxed{Var(X)=E(X(X-1))-\mu(\mu-1) \text{ where } \mu = E(X)}
+\end{equation}
+Now;
+\begin{align*}
+    E(X)&=\Pi^{'}(1)  \text{\emph{ (by 4.0.1)}}\\
+        &=np((1)p+(1-p))^{n-1} \\
+        &=np(p+1-p)^{n-1}\\
+        &=np(1)\\
+        &= \bm{np}
+\end{align*}
+\begin{align*}
+    Var(X) &= E(X(X-1)) - \mu(\mu -1)  \text{\emph{ (by 4.0.3)}} \\
+           &= \Pi^{''}(1) - np(np-1) \\
+           &= n(n-1)p^{2}(p(1)+(1-p))^{n-2} - np(np-1) \\
+           &= np^{2}(n-1) - np(np-1) \\
+           &= np(p(n-1)-(np-1)) \\
+           &= np(np-p-np+1)\\
+           &= \bm{np(1-p)}
+\end{align*}
+\end{document}.

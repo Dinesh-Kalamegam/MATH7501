@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+
+\begin{document}
+\title{MATH7501: Exercise 4 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (5 MARKS)}
+Let $X$ denote the bulb lifetime. $\bm{X \sim Exp(\lambda) \implies E(X) = \frac{1}{\lambda}}$
+
+In this case $\bm{E(X) = 500hrs \iff \lambda = \frac{1}{500}} \implies \bm{X \sim Exp(\frac{1}{500})}$
+
+We also note that in the exponential distribution $F_x(x) = P(X \leq x) = 1 - e^{-\lambda x}$
+\subsection{Proportion of bulbs have lifetimes in excess of 50 hours?}
+So the required probability
+\begin{align*}
+                        &= P(X > 50)\\ \\
+                         &= 1 - P(X \leq 50) \\ \\
+                         &= 1 - (1 - e^{\frac{-50}{500}}) \\ \\
+                         &= e^{-0.1} \\ \\
+                         &= \boxed{\bm{0.905}} \text{ (3 s.f) }
+\end{align*}
+
+\subsection{Percentage of boxes that meet guarantee}
+Let $Y$ be the number of bulbs in boxes of 10 where lifetime exceeds 50 hours
+
+Then $\bm{Y \sim Bin(10,0.905)}$ or $\bm{Y \sim Bin(10,e^{-0.1})}$ (either acceptable)
+
+\begin{align*}
+    P(Y \geq 9) &= P(Y=9) + P(Y=10) \\ \\
+                &= \binom{10}{9}(0.905)^{9}(1-0.095)^{1} + \binom{10}{10}(0.905)^{10}(1-0.095)^{0} \\ \\
+                &= 0.755 \text{ (3 s.f) }
+\end{align*}
+But because we want the percentage of boxes we get the final answer to be $\boxed{\bm{75.5 \%}}$ of boxes meet the guarantee
+\section{Question 2 (7 MARKS)}
+
+Let T be the journey time of Mrs Smith's Journey in minutes
+
+Let X be the cloud coverage (takes values from $0$ to $1$) Then $\bm{X \sim B(\frac{1}{2},1)}$
+
+Note if $\bm{X \sim B(\alpha,\beta)}$ then
+\begin{align*}
+    E(X) = \frac{\alpha}{\alpha + \beta}
+\end{align*}
+\begin{align*}
+    P(X \leq x) = \frac{1}{B(\alpha,\beta)} \int_{0}^{x} x^{\alpha-1}(1-x)^{1-\beta} dx
+\end{align*}
+where we have
+\begin{align*}
+    B(\alpha,\beta) = \int_{0}^{1} x^{\alpha-1}(1-x)^{1-\beta} dx
+\end{align*}
+And this makes sense as we want to get a probability between 0 and 1 and so we are normalising it by dividing it by the whole range of the intergal (from 0 to 1)
+
+\subsection{Expected journey time}
+As for T it takes values 10 and 15
+\begin{align*}
+    P(T = 10) = P(X\leq 0.4) \\
+    P(T = 15) = P(X > 0.4)
+\end{align*}
+So in our case
+\begin{align*}
+    B\left(\frac{1}{2},1 \right) &= \int_{0}^{1} x^{-\frac{1}{2}}(1-x)^{1-1} dx \\ \\
+                                 &= \int_{0}^{1} x^{-\frac{1}{2}} dx \\ \\
+                                 &= \left[2x^{\frac{1}{2}}\right]_{0}^{1}  \\ \\
+                                 &= 2
+\end{align*}
+So to find $P(X\leq 0.4)$
+\begin{align*}
+    B\left(\frac{1}{2},1 \right) &= \int_{0}^{0.4} x^{-\frac{1}{2}}(1-x)^{1-1} dx \\ \\
+                                 &= \int_{0}^{0.4} x^{-\frac{1}{2}} dx \\ \\
+                                 &= \left[2x^{\frac{1}{2}}\right]_{0}^{0.4}  \\ \\
+                                 &= 2 \sqrt{0.4} \\ \\
+                                 &= 0.6325 \text{ (4 s.f) }
+\end{align*}
+Then
+\begin{align*}
+    E(T) &= 10P(T=10) + 15P(T=15) \\ \\
+         &= 10(0.6325) + 15(1-0.6325) \\ \\
+         &= \boxed{\bm{11.8}} \text{ (3 s.f) }
+\end{align*}
+\subsection{Comparing to time when cloud coverage is the expected cloud coverage}
+The expected cloud coverage is given by
+\begin{align*}
+    E(X) &= \frac{\alpha}{\alpha+\beta} \\ \\
+         &= \frac{\frac{1}{2}}{\frac{1}{2} + 1} \\ \\
+         &= \frac{1}{3}
+\end{align*}
+Then $E(X) < 0.4$ which means she takes the direct route which is 10 minutes. Here the expected journey time is longer than the journey time for expected cloud cover
+\section{Question 3 (3 MARKS)}
+Surivor function $S(x) = 1 - F(x) = P(X \geq x)$
+\subsection{Show that $\int_{0}^{\infty}S(x) dx = E(X)$}
+First recall the by parts formula
+\begin{align*}
+    \int_{0}^{\infty} u\cdot'v dx = [u\cdot v]_{0}^{\infty} - \int_{0}^{\infty} u\cdot v' dx
+\end{align*}
+\begin{align*}
+    \int_{0}^{\infty}S(x) dx &= \int_{0}^{\infty}1 \cdot S(x) dx \\ \\
+                             &= [x\cdot S(x)]_{0}^{\infty}-\int_{0}^{\infty}-xf(x) dx
+\end{align*}
+Now as $x \to 0$  we have $xS(x)=xP(X\geq x) \to 0$ and by the assumption we can say the same for when $x \to \infty$ So we now have
+\begin{align*}
+    \int_{0}^{\infty}S(x) dx &= -\int_{0}^{\infty}-xf(x) dx \\ \\
+                             &= \int_{0}^{\infty}xf(x) dx
+\end{align*}
+and as we are only taking \emph{non-negative values} we have that the above is $E(X)$ so $\int_{0}^{\infty}S(x) dx = E(X)$ as required
+\subsection{Show that this is the case with the exponential distibution }
+For exponential distribtion where $X \sim Exp(\lambda)$ we have $E(X) = \frac{1}{\lambda}$
+
+We want to achieve the same using the integral $\int_{0}^{\infty} S(x) dx$
+\begin{align*}
+    &= \int_{0}^{\infty} 1-F(x) dx \text{  where $F(x) = 1 -e^{-\lambda x}$ in exponential distibution} \\ \\
+    &= \int_{0}^{\infty} 1-(1-e^{-\lambda x})dx  \\ \\
+    &= \int_{0}^{\infty} e^{-\lambda x} dx \\ \\
+    &= \left[-\frac{1}{\lambda} e^{-\lambda x} \right]_{0}^{\infty} \\ \\
+    &= \left[0 - (-\frac{1}{\lambda}) \right] \\ \\
+    &= \boxed{\bm{\frac{1}{\lambda}}}
+\end{align*}
+\section{Question 4 (5 MARKS)}
+\subsection{Show that $M_{Y}(t)=e^{tb}M_{X}(at)$ for continous random variable X}
+X is a continous random variable therefore the mgf $ = M_{X}(t) = E(e^{tX})$
+
+Suppose $Y=aX+b$ with mgf of $M_{Y}(t)$ then we have
+\begin{align*}
+    M_{Y}(t) &=  E(e^{tX}) \\
+             &=  E(e^{t(aX+b}) \\
+             &=  E(e^{(at)X} e^{bt}) \\
+             &=  e^{bt}E(e^{(at)X}) \\
+             &=  \boxed{\bm{e^{tb}M_{X}(at)}} \\
+\end{align*}
+as required
+\subsection{Say for $X \sim \Gamma(\alpha,\lambda)$ and $Y=3X$ show that Y too has a Gamma distibution and state its parameters}
+From (a):
+\begin{align*}
+    M_{Y}(t) &= e^{tb}M_{X}(at) \text{ (where here $a=3$ and $b=0$) } \\ \\
+             &= \frac{\lambda^{\alpha}}{(\lambda -3t)^{\alpha}} \\ \\
+             &= \frac{\lambda^{\alpha}}{3^{\alpha}(\frac{\lambda}{3} -t)^{\alpha}} \\ \\
+             &= \frac{(\frac{\lambda}{3})^{\alpha}}{(\frac{\lambda}{3} -t)^{\alpha}}
+\end{align*}
+By comparsion with mgf of a Gamma distibution conclude that $Y$ is also a Gamma distribution where $\boxed{\bm{Y \sim \Gamma(\alpha,\frac{\lambda}{3})}}$
+\end{document}

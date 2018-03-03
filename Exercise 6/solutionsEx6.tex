@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tabularx}
+
+\begin{document}
+\title{MATH7501: Exercise 6 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\renewcommand\qedsymbol{\textbf{\emph{Quod Erat Demonstrandum}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (6 MARKS)}
+\subsection{Are $X_{1}$ and $X_{2}$ independent?}
+If $X_{1}$ and $X_{2}$ are independent then their jpint probability funciton must factorise into oao product of the form $[f(x_{1},x_{2})]f_{X_{1}}(x_{1}) f_{X_{2}}{(x_{2})}]$. Clearly this is not possible here so $X_{1}$ and $X_{2}$ are not independent
+\subsection{Find Covariance between $X_{1}$ and $X_{2}$ how does it relate to the previous answer?}
+NOTE:
+\begin{equation*}
+  Cov(X_{1},X_{2}) = E(X_{1},X_{2}) -\mu_{1}\mu_{2}
+\end{equation*}
+Where $\mu_{1}=E(X_{1})$ and $\mu_{2}=E(X_{2})$
+
+So now we find the Integral
+\begin{align*}
+  E(X_{1}) &= \int_{x_{2}=-\infty}^{\infty} \int_{x_{1}=-\infty}^{\infty} x_{1}f(x_{1},x_{2})dx_{1}dx_{2} \\ \\
+  &= \int_{x_{2}=0}^{1} \int_{x_{1}=0}^{1} x_{1}f(x_{1},x_{2})dx_{1}dx_{2} \\ \\
+  &= \int_{x_{2}=0}^{1} \int_{x_{1}=0}^{1} x_{1}(x_{1}+x_{2})dx_{1}dx_{2} \\ \\
+  &= \int_{x_{2}=0}^{1} \int_{x_{1}=0}^{1} x_{1}^{2}+ x_{1}x_{2}dx_{1}dx_{2} \\ \\
+  &= \int_{x_{2}=0}^{1} \left[\frac{1}{3}x_{1}^{3} +\frac{1}{2}x_{1}^{2}x_{2} \right]_{x_{1}=0}^{1} dx_{2} \\ \\
+  &= \int_{x_{2}=0}^{1} \frac{1}{3}+\frac{1}{2}x_{2} dx_{2} \\ \\
+  &= \left[\frac{1}{3}x_{2}+\frac{1}{4}x_{2}^{2} \right]_{x_{2}=0}^{1} dx_{2} \\ \\
+  &= \frac{1}{3} + \frac{1}{4} = \bm{\frac{7}{12}}
+\end{align*}
+It is also trivially true that $\mu_{2} = E(X_{2}) = \frac{7}{12}$ By symmetry
+
+Then we find
+\begin{align*}
+  E(X_{1},X_{2}) &= \int_{X_{2}=0}^{1}\int_{X_{1}=0}^{1} x_{1}x_{2}(x_{1},x_{2})dx_{1}x_{2}
+\end{align*}
+Which when we perform the computation gives us the answer $\frac{1}{3}$
+
+Finally we can do
+\begin{align*}
+  Cov(X_{1},X_{2}) &= E(X_{1},X_{2}) -\mu_{1}\mu_{2} \\ \\
+                   &= \frac{1}{3} -\left(\frac{7}{12}\right)^{2} \\ \\
+                   &= \boxed {\bm{-\frac{1}{144}}}
+\end{align*}
+\section{Question 2 (4 MARKS)}
+\subsection{Conditional distribution of $Y$ and its parameters}
+From the exercise $X \sim Poi(\mu)$ and this is where $E(X)=\mu$. Given that $X=r$ The random variable $Y$ is then distributed as $Y \sim NB(r,p)$ (Bernoulli Trials to obtain r successes where probability of success p is independent from trial to trial). NOTE that the ``independently of each treatment occassion" tells us that even if the same animal goes for multiple treatments nothing will change.
+
+\boxed{\text{Y has a NEGATIVE BINOMIAL distribution with parameters r,p}}
+\subsection{Expected value of Y}
+Given that $X=r$, we have that $E(Y)= \frac{r}{p}$ i.e. $E_{Y|X}(Y|X) = \frac{X}{p}$ Where $\frac{X}{p}$ takes the value $\frac{k}{p}$ when $X=k$ Then using the ``Iterated Expectation Law"
+
+\begin{align*}
+  E_{Y}(Y) &= E_{X}[E_{Y|X}(Y|X)] \\ \\
+           &= E_{X} \left(\frac{X}{P}\right) \\ \\
+           &= \boxed{\bm{\frac{\mu}{p}}}
+\end{align*}
+\section{Question 3 (10 MARKS)}
+\subsection{Unconditional Expectation of $X_{2}$ }
+From quesiton $X_{1} \sim N(0,1)$ so $E_{X_{1}}(X_{X_{1}})=0$
+
+Given that $X_{1}=x_{1}$ we have that $X_{2} \sim N(\alpha x_{1}, \tau^{2})$
+
+So we have that $E_{(X_{2}|X_{1})}(X_{2}|X_{1})= \alpha X_{1}$ which we can use the Iterated Expectation Law on to get
+\begin{align*}
+  E_{(X_{2}|X_{1})}(X_{2}|X_{1}) &= E_{X_{1}}(\alpha X_{1}) \\
+  &= \alpha E_{X_{1}}(X_{1}) \\
+  &= \alpha \cdot 0 \\
+  &= 0
+\end{align*}
+\boxed{\bm{E(X_{2}=0)}}
+\subsection{Find expressions for marginal density of $X_{1}$ and for the Conditional density of $X_{2}$ given that $X_{1}=x_{1}$. Hence find the joint density of $X_{1}$ and $X_{2}$. Show that this joint density can be written in the form given in the sheet.}
+NOTE THE FORM REQUIRED IN THE SHEET IS GIVEN AS
+\begin{align*}
+  f(x_{1},x_{2}) = \frac{1}{2\pi\sigma\sqrt{1-\rho^{2}}}exp \left[ -\frac{1}{2(1-\rho^{2})}\left(x_{1}^{2} -\frac{2\rho x_{1} x_{2}}{\sigma} + \frac{x_{2}^{2}}{\sigma^{2}} \right) \right]
+\end{align*}
+FROM NOTES: If $X \sim N(\mu,\sigma^{2})$ then density function of $X$ is given by
+
+\begin{equation*}
+   f_{X}(x)=\frac{1}{\sqrt{2\pi\sigma^{2}}}e^{-\frac{(x-\mu)^{2}}{2\sigma^{2}}}
+\end{equation*}
+
+Then the marginal desnity of $X_{1}$ is given by
+\begin{align*}
+   f_{X_{1}}(x_{1})&=\frac{1}{\sqrt{2\pi}}e^{-\frac{(x_{1})^{2}}{2}}
+\end{align*}
+Where $x_{1} \in \mathbb{R}$. Also conditional on $X_{1}=x_{1}$ the conditional density of $x_{2}$ is given by
+\begin{equation*}
+   f_{X_{2}|X_{1}}(x_{2}|x_{1})=\frac{1}{\sqrt{2\pi\tau^{2}}}e^{-\frac{(x_{2}-\alpha x_{1})^{2}}{2\sigma^{2}}}
+\end{equation*}
+Where $x_{2} \in \mathbb{R}$. Then given that $X_{1}=x_{1}$ we have that $X_{2} \sim N(\alpha x_{1},\tau^{2})$
+
+The joint density function of $X_{1}$ and $X_{2}$ given by
+\begin{align*}
+  f(x_{1},x_{2}) &= f_{X_{1}}(X_{1}) \cdot f_{X_{2}|X_{1}}(x_{2}|x_{1}) \\ \\
+  &= \frac{1}{\sqrt{2\pi}}e^{-\frac{(x_{1})^{2}}{2}} \cdot \frac{1}{\sqrt{2\pi\tau^{2}}}e^{-\frac{(x_{2}-\alpha x_{1})^{2}}{2\tau^{2}}} \\ \\
+  &= \frac{1}{2\pi\tau} exp\left(-\frac{1}{2}\left(x_{1}^{2}+\frac{(x_{2}-\alpha x_{1})^{2}}{\tau^{2}}\right)\right)
+\end{align*}
+Then keeping the form required in mind we can rearrange to
+\begin{align*}
+  f(x_{1},x_{2}) &= \frac{1}{2\pi\tau} exp\left( -\frac{1}{2}\left( 1 + \frac{\alpha^{2}}{\tau^{2}}\right)x_{1}^{2} -\frac{2\alpha x_{1} x_{2}}{\tau^{2}} + \frac{x_{2}^{2}}{\tau^{2}}\right)
+\end{align*}
+Equating the coefficients of $x_{1}^{2}$ and $x_{2}^{2}$ respectively
+
+First $x_{1}^{2}$
+\begin{align*}
+  x_{1}^{2} &= \left( 1 + \frac{\alpha^{2}}{\tau^{2}}\right) = \frac{1}{1-\rho^{2}} \\
+  &\implies (1-\rho^{2}) = \frac{\tau^{2}}{\alpha^{2}+\tau^{2}}
+\end{align*}
+
+Then $x_{2}^{2}$
+\begin{align*}
+  x_{2}^{2} &= \frac{1}{(1-\rho)^{2}\sigma^{2}} = \frac{1}{\tau^{2}} \\
+  &\implies \sigma^{2} = \frac{\tau^{2}}{1-\rho^{2}}
+\end{align*}
+This leads to
+\begin{align*}
+  e^{2}=\frac{\alpha^{2}}{\alpha^{2}+\tau^{2}} \\ \\
+  \sigma^{2} = \alpha^{2} + \tau^{2}
+\end{align*}
+We can verify that these values make all corresponding coefficients equal and conclude that
+\begin{align*}
+  \rho = \frac{\alpha}{\sqrt{\alpha^{2}+\tau^{2}}} \\\\
+  \tau = \sqrt{\alpha^{2}+\tau^{2}}
+\end{align*}
+In the form asked by in the question
+\end{document}

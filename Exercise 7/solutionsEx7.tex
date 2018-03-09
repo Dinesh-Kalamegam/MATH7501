@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tabularx}
+
+\begin{document}
+\title{MATH7501: Exercise 7 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\renewcommand\qedsymbol{\textbf{\emph{Quod Erat Demonstrandum}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (5 MARKS)}
+\subsection{MGF of Bernoulli Distribution with parameter p}
+Let $X_2 \sim Ber(p)$ MGF can be found directly. $M_{x}(.)$ is given by
+\begin{align*}
+  M_{x}(t) &= \Sigma_{k}e^{tk}P(X=k) \\
+           &= e^{t \cdot 0} (1-p) + e^{t \cdot 1}(p) \\
+           &\boxed{\implies M_{x}(t) = E(e^{tX})=1-p+pe^{t}}
+\end{align*}
+\subsection{Deduce MGF of Binomail Distribution}
+Let $Y \sim (n,p)$ Then $Y= X_{1} +...+ X_{n}$ Where $X_{1},...,X_{n}$ are independent Bernoulli random variables each with parameter p $X_{i} \sim Ber(p)$ for $i=1,...,n$
+
+Then from result in notes MGF of $Y$ given by
+\begin{align*}
+  M_{Y}(t) &= M_{X_{1}}(t) + ... + M_{X_{n}} \\
+           &= (1-p+pe^{t}) + ... + (1-p+pe^{t}) \\
+           &= \boxed{(1-p+pe^{t})^{n}}
+\end{align*}
+
+\subsection{Verify mean and variannce of the binomial distribution}
+First derivative of the MGF given by
+\begin{align*}
+  M'_{Y}(t) &= \frac{d}{dt}M_{y}(t)  \\
+            &= n(1-p+pe^{t})^{n-1} \times npe^{t}
+\end{align*}
+Second derivative of the MGF given by
+\begin{align*}
+  M''_{Y}(t) &= \frac{d^{2}}{dt^{2}}M_{y}(t) \\
+             &= n(n-1)p^{2}e^{t}(1-p+pe^{t})^{n-2} + npe^{t}(1-p+pe^{t})^{n-1}
+\end{align*}
+Hence
+\begin{align*}
+  \boxed{E(Y)=  M'_{Y}(0) = np^{0}(1-p+pe^{0}) = np} \\
+  E(Y^{2}) = M''_{Y}(0) = n(n-1)p^{2}+np
+\end{align*}
+\begin{align*}
+  \boxed{Var(Y)= n(n-1)p^{2}+np - (np)^{2} = np(1-p)}
+\end{align*}
+And this is as required
+\section{Question 2 (5 MARKS)}
+\subsection{Show that $S_{n}$ has a gamma distribution}
+Here $X_{i} \sim \Gamma(\alpha_{i},\lambda)$ MGF of $X_{i}$ are given by
+\begin{align*}
+  M_{X_{i}}(t) = E(e^{tX_{i}}) = \left(\frac{\lambda}{\lambda -t} \right )^{\alpha_{i}}
+\end{align*}
+Then since $S_{n} = X_{1} + ... + X_{n}$ where $X_{i}$ are independent $(i=1,...,n)$
+\begin{align*}
+  M_{S_{n}} (t) &= M_{X_{1}}(t) + ... + M_{X_{n}}(t) \\
+            &= \left(\frac{\lambda}{\lambda -t} \right )^{\alpha_{1}} ... \left(\frac{\lambda}{\lambda -t} \right )^{\alpha_{n}} \\
+            &= \left(\frac{\lambda}{\lambda -t} \right )^{\alpha_{1}+...\alpha_{n}}
+\end{align*}
+Has same form of MGF of a gamma distribution with parameters $\lambda$ , $\alpha_{1} + ... + \alpha_{n}$
+
+i.e. $S_{n} \sim \Gamma \left( \sum_{i=1}^{n} \alpha_{i} , \lambda \right)$
+
+\subsection{Use Central Limit Theorem to deduce result in sheet }
+Consider $X \sim \Gamma(\lambda,n)$ using the above cna express $X$ as $X = X_{1} + ... +X_{n}$ where $X_{1} \sim \Gamma(1,\lambda)$ then substitute $\alpha_{i} =1$ for $i=1,...n$ above
+
+By Central Limit Theorem if $X_{1},...X_{n}$ independent identically distributed random variables with common mean $\mu$ and common variance of $\sigma^{2}$ Then
+\begin{align*}
+  \bar{X} = \frac{X_{1}+...+X_{n}}{n}
+\end{align*}
+approximates to a normal distribution with mean $\mu$ and variance $\frac{\sigma^{2}}{n}$ as n gets larger
+
+so when is large $\frac{X_{1}+...+X_{n}}{n} = N \left(\mu,\frac{\sigma^{2}}{n} \right)$
+
+Then $E(n\bar{X})= nE(\bar{X}) = n\mu$ and $Var(n\bar{X})=n^{2}Var(\bar{X}) = n^{2}(\sigma^{2} / n) = n\sigma^{2}$ for n large
+
+So for large n: $n\bar{X}=X_{1}+...+X_{n} \sim N(n\mu,n\sigma^{2})$ in this case we have that $X_{i} \sim \Gamma(1,\lambda)$ so that $E(X_{i})=\frac{1}{\lambda}$ and $Var(X_{i}) = \frac{1}{\lambda^{2}}$ so we may set $\mu = \frac{1}{\lambda}$ and $\sigma^{2} = \frac{1}{\lambda^{2}}$
+as above
+
+This leads to $X=X_{1}+...+X_{n} \sim N(n(1/\lambda),n(1/\lambda^{2}))$ for large $n$
+
+Then
+\begin{align*}
+  P(n<\lambda X < n+\sqrt{n}) &= P\left(\frac{n}{\lambda}<X<\frac{n+\sqrt{n}}{\lambda}\right)  \\
+  &= P \left (0 < X - n/\lambda < \sqrt{n}/\lambda \right) \\
+  &= P \left (0 < \frac{X - n/\lambda}{\sqrt{n}/\lambda} < 1 \right )
+\end{align*}
+
+So we have that $\frac{X-n/\lambda}{\sqrt{n}/\lambda} \sim N(0,1)$
+
+So for large n:
+\begin{align*}
+  P(n<\lambda X < n+\sqrt{n}) &= P(0<Z<1) \\
+  &= P(Z<1)-P(Z<0) \\
+  &= 0.8413 -0.5  \text{ get values from table} \\
+  &= 0.3413
+\end{align*}
+Which is approximately $\boxed{0.34}$ as required
+\section{Question 3 (10 MARKS)}
+\subsection{MGF of Poisson Distribution}
+Suppose $X \sim Poi(\mu) \implies P(x=k) = \frac{e^{-\mu}\mu^{k}}{k!}$ then the MGF of X is given by
+\begin{align*}
+  M_{X}(t)&= E(e^{tX}) \\
+          &= \sum_{k} e^{tk}P(X=k) \\
+          &= \sum_{k=0}^{\infty} e^{tk}\frac{e^{-\mu}\mu^{k}}{k!} \\
+          &= e^{-\mu} \sum_{k=0}^{\infty} -\frac{(\mu e^{t})^{k}}{k!}\\
+          &= e^{-\mu} e^{\mu e^{t}}\\
+          &= e^{\mu(e^{t} -1)} \\
+          &= exp(\mu(e^{t}-1))
+\end{align*}
+As required 
+\end{document}

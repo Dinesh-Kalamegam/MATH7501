@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tabularx}
+
+\begin{document}
+\title{MATH7501: Exercise 9 Solutions}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\renewcommand\qedsymbol{\textbf{\emph{Quod Erat Demonstrandum}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+\numberwithin{equation}{subsection}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Defintion}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\section{Question 1 (12 marks)}
+\subsection{Test hypothesis that $\sigma_{A} = \sigma_{B}$ against the alternative that $\sigma_{A} \neq \sigma_{B}$ at $5\%$ hyothesis level}
+To test $H_{0}: \sigma_{A} = \sigma_{B}$ against $\sigma_{A} \neq \sigma_{B}$ the test statistic is $F=\frac{s_{A}^{2}}{s_{B}^{2}}$ as $\frac{s_{A}^{2}/\sigma_{A}^{2}}{s_{B}^{2}/\sigma_{B}^{2}}$ has a F distribution and in this case $\sigma_{A} = \sigma_{B}$
+
+So under $H_{0}$ we have $F \sim F_{n_{A}^{-1},n_{B}^{-1}}$ i.e. $F \sim F_{8,10}$ and we have that $\frac{1}{F} \sim F_{10,8}$ which is $\frac{s_{B}^{2}}{s_{A}^{2}}$
+
+So using the tables we will reject $H_{0}$ if
+\begin{align*}
+  & \frac{s_{A}^{2}}{s_{B}^{2}} > 3.855 \\
+  & \text{or if } \\
+  &\frac{s_{B}^{2}}{s_{A}^{2}} > 4.295 \text{ i.e.} \frac{s_{A}^{2}}{s_{B}^{2}} < 0.233 \text{ (3dp)} \\
+  & \text{To write it out clearer reject $H_{0}$ if} \\
+  & \left(\frac{s_{A}^{2}}{s_{B}^{2}} > 3.855 \right) \lor \left(\frac{s_{A}^{2}}{s_{B}^{2}} < 0.233 \right) \\
+\end{align*}
+The observed value of F is $\frac{5100^{2}}{5900^{2}}=0.747$ to 3 decimal places. This value is in the acceptance region for the test so we \underline{\textbf{DO NOT REJECT $H_{0}$}} and conclude that there is \underline{\textbf{NO EVIDENCE}} that the standard deviation differs
+\subsection{Next hypothesis test on the mean lifetimes}
+Now assuming that $\sigma_{A}=\sigma_{B}$ we test that $H_{0}: \mu_{A} = \mu_{B}$ against $H_{1}: \mu_{A} \neq \mu_{B}$ The relevant test statistic is
+\begin{align*}
+  T &= \frac{\bar{X_{A}}-\bar{X_{B}}} {s_{p}\sqrt{\frac{1}{n_{A}}+\frac{1}{n_{B}}}} \\
+  & \text{where} \\
+  & s_{p} = \frac{(n_{A}-1)s_{A}^{2} +(n_{B}-1)s_{B}^{2} }{n_{A}+n_{B}-2}
+\end{align*}
+Under $H_{0}: T \sim t_{n_{A}+n_{B}-2}$ i.e. here $T \sim t_{18}$ (under $H_{0}$)
+So using the relevant table we will reject $H_{0}$ if
+
+\begin{align*}
+  & \lvert T \rvert >2.101 \text{ (The upper $2.5\% $ of $t_{18}$)} \\
+\end{align*}
+   i.e. if $T<-2.101$ or $T>2.101$
+
+The observed values of $s_{p}$ and $T$ are given by
+\begin{align*}
+  & s_{p}^{2} = \frac{8 \times (5100^{2}) + 10 \times (5900^{2})}{18} \\ \\
+              &= 3089889 \text{ approximately} \\ \\
+  & T = \frac{37900-39800}{s_{p} \sqrt{\frac{1}{9} + \frac{1}{11}}} \\ \\
+  &= -0.76 \text{ to 2 dp}
+\end{align*}
+This lies within the \underline{acceptance region} hence there is \underline{NO EVIDENCE} for a difference between the lifetimes of the two tyre types
+
+\subsection{The $95\%$ confidence interval}
+A  $95\%$ confidence interval for $\mu_{A} - \mu_{B}$ is given by
+\begin{align}
+  (\bar{x_{A}} - \bar{x_{B}}) \pm (t_{18})_{2.5\%}s_{p}\sqrt{\frac{1}{n_{A}}+\frac{1}{n_{B}}}
+\end{align}
+i.e.
+\begin{align}
+  (37900-39800) \pm (2.101)s_{p}\sqrt{\frac{1}{9}+\frac{1}{11}}
+\end{align}
+This leads to the interval $\boxed{(-7149.4,3349.5)}$ km (approximately) for $\mu_{A}-\mu_{B}$
+
+This interval includes zero agreeing with the hypthesis test result ( the test for $\mu_{A}=\mu_{B}$ i.e. $\mu_{A}-\mu_{B}=0$)
+
+The interval $1.3.1$ arises from
+\begin{align*}
+  & -2.101< \frac{\bar{x}_{A}-\bar{x}_{B}- (\mu_{A}-\mu_{B})}{s_{p}\sqrt{\frac{1}{n_{A}}+\frac{1}{n_{B}}}} < 2.101 \\  \\
+  & (\bar{x}_{A}-\bar{x}_{B})-2.101\sqrt{\frac{1}{n_{A}}+\frac{1}{n_{B}}} < \mu_{A}-\mu_{B} < (\bar{x}_{A}-\bar{x}_{B})+2.101\sqrt{\frac{1}{n_{A}}+\frac{1}{n_{B}}}
+\end{align*}
+\section{Question 2 (8 marks)}
+Since the test scores between the first and second test are not independent we use a paired $t$-test. Let $d$ be the improvement score for the $i^{th}$ child and let
+\begin{align*}
+  & E(d_{i})=\mu_{D} \\
+  & Var(d_{i})=\sigma_{D}^{2}
+\end{align*}
+To test $H_{0}: \mu_{0}$ against $H_{1}: \mu_{0} \neq 0$ we use the test statistic
+\begin{align*}
+  T = \frac{\bar{d}}{s_{D}/\sqrt{n}}
+\end{align*}
+which under $H_{0}$ is distributed by $t_{7}$. For a $5\%$ test we reject $H_{0}$ if
+\begin{align*}
+  \lvert T \rvert >2.365
+\end{align*}
+otherwise we do not reject.
+
+Here $\bar{d} =2$ and $s_{D}^{2} = 7.142$ (3 dp). This leads to the observed of $T$ being $2.117$ (3 dp) we do not reject $H_{0}$ at the $5\%$ significance level, there is no evidence to show that the new teaching method makes a difference
+
+We can comment on the fact that it is the same group of children being tested. A better test could have been done if we had two samples of children one that used that the new methods and one did not.
+\end{document}

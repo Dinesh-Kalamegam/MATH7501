@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.2.25)  18 APR 2018 18:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/W32TeX) (preloaded format=pdflatex 2018.2.25)  18 APR 2018 23:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**./Continuous_Distribuutions_Summary.tex
-(./Continuous_Distribuutions_Summary.tex
+**./Continuous_Distributions_Summary.tex
+(./Continuous_Distributions_Summary.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 9 language(s) loaded.
 (c:/texlive/2017/texmf-dist/tex/latex/base/article.cls
@@ -145,8 +145,8 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \TX@delta=\dimen126
 \TX@cols=\count102
 \TX@ftn=\toks28
-) (./Continuous_Distribuutions_Summary.aux)
-\openout1 = `Continuous_Distribuutions_Summary.aux'.
+) (./Continuous_Distributions_Summary.aux)
+\openout1 = `Continuous_Distributions_Summary.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
@@ -204,18 +204,18 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 13.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] (./Continuous_Distribuutions_Summary.aux) ) 
+{c:/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] (./Continuous_Distributions_Summary.aux) ) 
 Here is how much of TeX's memory you used:
  1935 strings out of 494805
- 23835 string characters out of 6178183
+ 23826 string characters out of 6178183
  82117 words of memory out of 5000000
  5258 multiletter control sequences out of 15000+600000
  22907 words of font info for 85 fonts, out of 8000000 for 9000
  81 hyphenation exceptions out of 8191
- 27i,13n,26p,250b,182s stack positions out of 5000i,500n,10000p,200000b,80000s
-<c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/publ
-ic/amsfonts/cm/cmsy6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Continuous_Distribuutions_Summary.pdf (5 pages, 142128 bytes).
+ 27i,13n,26p,249b,182s stack positions out of 5000i,500n,10000p,200000b,80000s
+<c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2017/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy6.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb><c:/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on Continuous_Distributions_Summary.pdf (5 pages, 142128 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  57 compressed objects within 1 object stream

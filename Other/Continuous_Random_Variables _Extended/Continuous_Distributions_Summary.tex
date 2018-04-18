@@ -1,0 +1,180 @@
+\documentclass[12pt]{article}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{tabularx}
+
+\begin{document}
+\title{Summary of Continuous Distributions for a random Variable $X$}
+\author{Dinesh Kalamegam}
+\date{\today}
+\maketitle
+
+\section{Uniform $X \sim U(a,b)$}
+\subsection{Probability Density Function $f(x)$}
+
+\begin{equation*}
+  f(x) =
+  \begin{cases}
+     \frac{1}{b-a} & a \leq x \leq b \\
+     0 & \text{Otherwise}
+  \end{cases}
+\end{equation*}
+
+\subsection{Cumulative Distribution Function $F(x)$}
+
+\begin{equation*}
+  F(x) =
+  \begin{cases}
+     0 & x <a \\
+     \frac{x-a}{b-a} & a \leq x \leq b \\
+     1 & x>b
+  \end{cases}
+\end{equation*}
+
+\subsection{Moment Generating Function $M(t)=E(e^{tX})$}
+
+\begin{equation*}
+    M(t)=\frac{e^{tb}-e^{ta}}{t(b-a)}
+\end{equation*}
+
+\subsection{$\bm{E(X)}$}
+
+\begin{equation*}
+  E(X) = \frac{a+b}{2}
+\end{equation*}
+
+\subsection{$\bm{Var(X)}$}
+
+\begin{equation*}
+  Var(X)= \frac{(b-a)^{2}}{12}
+\end{equation*}
+
+\newpage
+\section{Exponential $X \sim Exp(\lambda)$}
+\subsection{Probability Density Function $f(x)$}
+
+\begin{equation*}
+  f(x) =
+  \begin{cases}
+     \lambda e^{-\lambda x} & x>0 \\
+     0 & \text{Otherwise}
+  \end{cases}
+\end{equation*}
+
+\subsection{Cumulative Distribution Function $F(x)$}
+\begin{align*}
+  F(x) &= 1-e^{-\lambda x} \text{ where $x>0$}\\
+\end{align*}
+
+\subsection{Moment Generating Function $M(t)=E(e^{tX})$}
+
+\begin{equation*}
+    M(t)=\frac{\lambda}{\lambda -t}
+\end{equation*}
+
+\subsection{$\bm{E(X)}$}
+
+\begin{equation*}
+  E(X) = \frac{1}{\lambda}
+\end{equation*}
+
+\subsection{$\bm{Var(X)}$}
+
+\begin{equation*}
+  Var(X)= \frac{1}{\lambda^{2}}
+\end{equation*}
+
+\newpage
+\section{Gamma $X \sim \Gamma(\alpha,\lambda)$}
+\subsection{Probability Density Function $f(x)$}
+
+\begin{equation*}
+  f(x) =
+  \begin{cases}
+     \frac{\lambda^{\alpha} x^{\alpha -1} e^{-\lambda x}}{\Gamma(\alpha)} & x \geq 0 \\
+     0 & \text{Otherwise}
+  \end{cases}
+\end{equation*}
+Where we have
+\begin{align*}
+  \Gamma(\alpha) &= \int_{0}^{\infty}x^{\alpha -1}e^(-x) dx \\
+                 &= (\alpha -1)!
+\end{align*}
+\subsection{Moment Generating Function $M(t)=E(e^{tX})$}
+
+\begin{equation*}
+    M(t)=\frac{\lambda^{\alpha}}{(\lambda -t)^{\alpha}}
+\end{equation*}
+
+\subsection{$\bm{E(X)}$}
+
+\begin{equation*}
+  E(X) = \frac{\alpha}{\lambda}
+\end{equation*}
+
+\subsection{$\bm{Var(X)}$}
+
+\begin{equation*}
+  Var(X)= \frac{\alpha}{\lambda^{2}}
+\end{equation*}
+\newpage
+\section{Beta $X \sim B(\alpha,\beta)$}
+\subsection{Probability Density Function $f(x)$}
+
+\begin{equation*}
+  f(x) =
+  \begin{cases}
+     \frac{x^{\alpha -1} (1-x)^{\beta -1}}{B(\alpha,\beta)} & x \in (0,1) \\
+     0 & \text{Otherwise}
+  \end{cases}
+\end{equation*}
+Where we have
+\begin{align*}
+  B(\alpha,\beta) &= \int_{0}^{1}x^{\alpha -1}(1-x)^{\beta -1} dx
+\end{align*}
+
+\subsection{$\bm{E(X)}$}
+
+\begin{equation*}
+  E(X) = \frac{\alpha}{\alpha + \beta}
+\end{equation*}
+
+\subsection{$\bm{Var(X)}$}
+
+\begin{equation*}
+  Var(X)= \frac{\alpha \beta}{(\alpha \beta)^{2} (\alpha + \beta + 1)}
+\end{equation*}
+
+\newpage
+\section{Normal $X \sim N(\mu,\sigma^{2})$}
+\subsection{Probability Density Function $f(x)$}
+
+\begin{equation*}
+  f(x) = \frac{1}{\sqrt{2\pi \sigma^{2}}}exp \left [- \frac{(x-\mu)^{2}}{2\sigma^{2}}\right]
+\end{equation*}
+Where we have $x \in \mathbb{R}$
+
+\subsection{Moment Generating Function $M(t)$}
+\begin{equation*}
+  M(t) = exp \left [\mu t - \frac{\sigma^{2} t^{2}}{2} \right]
+\end{equation*}
+\subsection{$\bm{E(X)}$}
+
+\begin{equation*}
+  E(X) = \mu
+\end{equation*}
+
+\subsection{$\bm{Var(X)}$}
+
+\begin{equation*}
+  Var(X)= \sigma^{2}
+\end{equation*}
+
+Also for normal distributions we can have that $X$ can become the standard normal distribution $Z \sim N(0,1)$ by the calculation
+\begin{equation*}
+  \frac{X-\mu}{\sigma^{2}}
+\end{equation*}
+\end{document}

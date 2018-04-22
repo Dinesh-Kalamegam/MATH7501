@@ -1,7 +1,7 @@
 # Fdb version 3
-["pdflatex"] 1524401184 "Continuous_Distributions_Summary.tex" "Continuous_Distributions_Summary.pdf" "Continuous_Distributions_Summary" 1524401185
-  "Continuous_Distributions_Summary.aux" 1524401185 2443 d067b1960940a2d17b168b1f773dac23 ""
-  "Continuous_Distributions_Summary.tex" 1524401183 5788 05d9d50b56899a5e5b07b8078669c460 ""
+["pdflatex"] 1524401258 "Continuous_Distributions_Summary.tex" "Continuous_Distributions_Summary.pdf" "Continuous_Distributions_Summary" 1524401259
+  "Continuous_Distributions_Summary.aux" 1524401259 2443 d067b1960940a2d17b168b1f773dac23 ""
+  "Continuous_Distributions_Summary.tex" 1524401257 5794 46e725baeaefd459aea2039a8dacc28b ""
   "c:/texlive/2017/texmf-dist/fonts/map/fontname/texfonts.map" 1519584335 3332 103109f5612ad95229751940c61aada0 ""
   "c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1519583460 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "c:/texlive/2017/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1519583460 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -82,6 +82,6 @@
   "c:/texlive/2017/texmf-var/web2c/pdftex/pdflatex.fmt" 1519586324 946677 4035d7ba8e2edda010d64551b3ae5788 ""
   "c:/texlive/2017/texmf.cnf" 1519586234 673 4ae7b2f49cee444c5343a45b5d0f169c ""
   (generated)
-  "Continuous_Distributions_Summary.pdf"
   "Continuous_Distributions_Summary.aux"
   "Continuous_Distributions_Summary.log"
+  "Continuous_Distributions_Summary.pdf"

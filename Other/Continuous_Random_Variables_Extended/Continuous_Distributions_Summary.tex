@@ -49,6 +49,16 @@
     M(t)=\frac{e^{tb}-e^{ta}}{t(b-a)}
 \end{equation*}
 
+\begin{proof}
+\begin{align*}
+  M(t) &= E(e^{tX})\\
+       &= \int_{a}^{b} e^{tx} f(x) dx \\
+       &= \int_{a}^{b} \frac{e^{tx}}{(b-a)} \\
+       &= \left[\frac{e^{tx}}{b-a} \right]_{a}^{b} \\
+       &= \frac{e^{tb}-e^{ta}}{b-a}
+\end{align*}
+\end{proof}
+
 \subsection{$\bm{E(X)}$}
 
 \begin{equation*}
@@ -204,6 +214,7 @@ Where we have $x \in \mathbb{R}$
 \begin{equation*}
   M(t) = exp \left [\mu t - \frac{\sigma^{2} t^{2}}{2} \right]
 \end{equation*}
+
 \subsection{$\bm{E(X)}$}
 
 \begin{equation*}

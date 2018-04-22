@@ -122,24 +122,64 @@
   F(x) &= 1-e^{-\lambda x} \text{ where $x>0$}\\
 \end{align*}
 
+\begin{proof}
+  \begin{align*}
+    F(x) &= \int_{0}^{x} \lambda e^{-\lambda u} du \\
+         &= \left[-e^{-\lambda u} \right]_{0}^{x} \\
+         &= (-e^{-\lambda x}) - (-1) \\
+         &= 1 - e^{-\lambda x}
+  \end{align*}
+\end{proof}
 \subsection{Moment Generating Function $M(t)=E(e^{tX})$}
 
 \begin{equation*}
     M(t)=\frac{\lambda}{\lambda -t}
 \end{equation*}
-
+\begin{proof}
+\begin{align*}
+  M(t) &= E(e^{t}) \\
+       &= \int_{\mathbb{R}} e^{tx} f(x) dx \\
+       &= \int_{0}^{\infty} e^{tx} \cdot \lambda e^{-\lambda x} dxs \\
+       &= \int_{0}^{\infty} \lambda e^{(t-\lambda)x} dx \\
+       &= \left[\frac{\lambda}{(t-\lambda)}e^{(t-\lambda)x} \right]_{0}^{\infty} \\
+       &= \frac{\lambda}{\lambda -t}
+\end{align*}
+\end{proof}
 \subsection{$\bm{E(X)}$}
 
 \begin{equation*}
   E(X) = \frac{1}{\lambda}
 \end{equation*}
 
+\begin{proof}
+  \begin{align*}
+    E(X) &= \int_{0}^{\infty} x f(x)\\
+         &= \int_{0}^{\infty} x \lambda e^{-\lambda x} dx \\
+         &= [-xe^{-\lambda x}]_{0}^{\infty} - \int_{0}^{\infty} -e^{-\lambda x} \\
+         &= \left[-\frac{1}{\lambda} e^{-\lambda x} \right]_{0}^{\infty} \\
+         &= 0 - \left(-\frac{1}{\lambda}\right) \\
+         &= \frac{1}{\lambda}
+  \end{align*}
+\end{proof}
 \subsection{$\bm{Var(X)}$}
 
 \begin{equation*}
   Var(X)= \frac{1}{\lambda^{2}}
 \end{equation*}
-
+\begin{proof}
+  \begin{align*}
+    E(X^{2}) &= \int_{0}^{\infty} x^{2} f(x) dx \\
+             &= \int_{0}^{\infty} x^{2} \lambda e^{-\lambda x} dx \\
+             &= \left[-x^{2}e^{-\lambda x} \right]_{0}^{\infty} - \int_{0}^{\infty}-2x e^{-\lambda x} dx \\
+             &= 2\int_{0}^{\infty} xe^{-\lambda x} \\
+             &= 2\left[-\frac{1}{\lambda}xe^{-\lambda x} \right]_{0}^{\infty} -2 \int_{0}^{\infty}-\frac{1}{\lambda}e^{-x} \\
+             &= 2\int_{0}^{\infty} \frac{1}{\lambda}e^{-\lambda x} dx \\
+             &= 2\left[-\frac{1}{\lambda^{2}}e^{-\lambda x} \right]_{0}^{\infty} \\
+             &= \frac{2}{\lambda^{2}} \\ \\
+    Var(X) &= \frac{2}{\lambda^{2}} - \left(\frac{1}{\lambda}\right)^{2} \\
+           &= \frac{1}{\lambda^{2}}
+  \end{align*}
+\end{proof}
 \newpage
 \section{Gamma $X \sim \Gamma(\alpha,\lambda)$}
 \subsection{Probability Density Function $f(x)$}

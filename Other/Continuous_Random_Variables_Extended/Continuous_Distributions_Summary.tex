@@ -139,7 +139,7 @@
 \begin{align*}
   M(t) &= E(e^{t}) \\
        &= \int_{\mathbb{R}} e^{tx} f(x) dx \\
-       &= \int_{0}^{\infty} e^{tx} \cdot \lambda e^{-\lambda x} dxs \\
+       &= \int_{0}^{\infty} e^{tx} \cdot \lambda e^{-\lambda x} dx \\
        &= \int_{0}^{\infty} \lambda e^{(t-\lambda)x} dx \\
        &= \left[\frac{\lambda}{(t-\lambda)}e^{(t-\lambda)x} \right]_{0}^{\infty} \\
        &= \frac{\lambda}{\lambda -t}
@@ -153,9 +153,9 @@
 
 \begin{proof}
   \begin{align*}
-    E(X) &= \int_{0}^{\infty} x f(x)\\
+    E(X) &= \int_{0}^{\infty} x f(x) dx\\
          &= \int_{0}^{\infty} x \lambda e^{-\lambda x} dx \\
-         &= [-xe^{-\lambda x}]_{0}^{\infty} - \int_{0}^{\infty} -e^{-\lambda x} \\
+         &= [-xe^{-\lambda x}]_{0}^{\infty} - \int_{0}^{\infty} -e^{-\lambda x}dx \\
          &= \left[-\frac{1}{\lambda} e^{-\lambda x} \right]_{0}^{\infty} \\
          &= 0 - \left(-\frac{1}{\lambda}\right) \\
          &= \frac{1}{\lambda}
@@ -171,8 +171,8 @@
     E(X^{2}) &= \int_{0}^{\infty} x^{2} f(x) dx \\
              &= \int_{0}^{\infty} x^{2} \lambda e^{-\lambda x} dx \\
              &= \left[-x^{2}e^{-\lambda x} \right]_{0}^{\infty} - \int_{0}^{\infty}-2x e^{-\lambda x} dx \\
-             &= 2\int_{0}^{\infty} xe^{-\lambda x} \\
-             &= 2\left[-\frac{1}{\lambda}xe^{-\lambda x} \right]_{0}^{\infty} -2 \int_{0}^{\infty}-\frac{1}{\lambda}e^{-x} \\
+             &= 2\int_{0}^{\infty} xe^{-\lambda x} dx \\
+             &= 2\left[-\frac{1}{\lambda}xe^{-\lambda x} \right]_{0}^{\infty} -2 \int_{0}^{\infty}-\frac{1}{\lambda}e^{-x} dx \\
              &= 2\int_{0}^{\infty} \frac{1}{\lambda}e^{-\lambda x} dx \\
              &= 2\left[-\frac{1}{\lambda^{2}}e^{-\lambda x} \right]_{0}^{\infty} \\
              &= \frac{2}{\lambda^{2}} \\ \\
@@ -193,7 +193,7 @@
 \end{equation*}
 Where we have
 \begin{align*}
-  \Gamma(\alpha) &= \int_{0}^{\infty}x^{\alpha -1}e^(-x) dx \\
+  \Gamma(\alpha) &= \int_{0}^{\infty}x^{\alpha -1}e^{-x} dx \\
                  &= (\alpha -1)!
 \end{align*}
 \subsection{Moment Generating Function $M(t)=E(e^{tX})$}
@@ -202,17 +202,49 @@ Where we have
     M(t)=\frac{\lambda^{\alpha}}{(\lambda -t)^{\alpha}}
 \end{equation*}
 
+\begin{proof}
+  \begin{align*}
+    M(t) &= E(e^{tX}) \\
+         &= \int_{0}^{\infty} e^{tx}f(x) dx \\
+         &=\int_{0}^{\infty}\frac{1}{\Gamma(\alpha)}x^{\alpha-1}\lambda^{\alpha}e^{-(\lambda -t)x} dx\\
+         &=\frac{\lambda^{\alpha}}{(\lambda-t)^{\alpha}}\int_{0}^{\infty}\frac{1}{\Gamma(\alpha)}x^{\alpha-1}(\lambda-t)^{\alpha}e^{-(\lambda -t)x} dx\\
+  \end{align*}
+However, provided that $t<\lambda$ so $t-\lambda > 0$ the integrand here is the density of $\Gamma(\alpha,\lambda-t)$ hence would equal 1. Hence can conclude that
+\begin{align*}
+  M(t)=\frac{\lambda^{\alpha}}{(\lambda -t)^{\alpha}}
+\end{align*}
+\end{proof}
+
 \subsection{$\bm{E(X)}$}
 
 \begin{equation*}
   E(X) = \frac{\alpha}{\lambda}
 \end{equation*}
-
+\begin{proof} From MGF
+  \begin{align*}
+    M(t) &= \lambda^{\alpha}(\lambda-t)^{\alpha} \\
+    M'(t) &= \lambda^{\alpha} \alpha (\lambda-t)^{-(\alpha+1)} \\
+    M'(0) &= \frac{\lambda^{\alpha} \alpha}{\lambda^{\alpha+1}} \\
+          &= \frac{\alpha}{\lambda}
+  \end{align*}
+\end{proof}
 \subsection{$\bm{Var(X)}$}
-
 \begin{equation*}
   Var(X)= \frac{\alpha}{\lambda^{2}}
 \end{equation*}
+\begin{proof}
+  \begin{align*}
+    M'(t) &= \lambda^{\alpha} \alpha (\lambda-t)^{-(\alpha+1)}\\
+    M''(t) &= \lambda^{\alpha} \alpha (\alpha+1) (\lambda-t)^{-(\alpha+2)}\\
+    M''(0) &= \frac{\lambda^{\alpha}\alpha(\alpha+1)}{\lambda^{\alpha+2}}\\
+           &= \frac{\alpha(\alpha+1)}{\lambda^{2}}
+  \end{align*}
+Then we use $Var(X)=E(X^{2})-[E(X)]^{2}$ to get the result
+\begin{align*}
+  Var(x)&= \frac{\alpha(\alpha+1)}{\lambda^{2}}  - \frac{\alpha^{2}}{\lambda^{2}} \\
+        &= \frac{\alpha}{\lambda^{2}}
+\end{align*}
+\end{proof}
 \newpage
 \section{Beta $X \sim B(\alpha,\beta)$}
 \subsection{Probability Density Function $f(x)$}
